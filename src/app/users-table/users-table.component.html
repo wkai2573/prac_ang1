@@ -1,0 +1,45 @@
+<div class="mat-elevation-z8">
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+    <!-- Id 欄位 -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    </ng-container>
+
+		<!-- 名 -->
+    <ng-container matColumnDef="first_name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name 名</th>
+      <td mat-cell *matCellDef="let row">{{row.first_name}}</td>
+    </ng-container>
+
+		<!-- 姓 -->
+		<ng-container matColumnDef="last_name">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name 姓</th>
+			<td mat-cell *matCellDef="let row">{{row.last_name}}</td>
+		</ng-container>
+
+		<!-- email -->
+		<ng-container matColumnDef="email">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Email 信箱</th>
+			<td mat-cell *matCellDef="let row">{{row.email}}</td>
+		</ng-container>
+
+		<!-- 頭像 -->
+		<ng-container matColumnDef="avatar">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Avatar 頭像</th>
+			<td mat-cell *matCellDef="let row">{{row.avatar}}</td>
+		</ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+	<!-- 分頁bar -->
+  <mat-paginator #paginator
+      [length]="dataSource?.data?.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]"
+      aria-label="Select page">
+  </mat-paginator>
+</div>
