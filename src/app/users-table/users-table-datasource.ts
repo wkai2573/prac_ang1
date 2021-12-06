@@ -1,68 +1,40 @@
+// 此檔案適合:
+// 資料一次全部撈取，然後由前端進行分頁與排序使用
+// 如果要由後端做分頁，使用簡單資料(Simple data array)即可
+
 import { DataSource } from '@angular/cdk/collections';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatSort, Sort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-
-//列結構
-export interface UsersTableItem {
-  id: number;
-  first_name: string;
-	last_name: string;
-	email: string;
-	avatar: string;
-}
-
-//資料
-const EXAMPLE_DATA: UsersTableItem[] = [
-  {id: 1, first_name: 'Hydrogen', last_name:'A', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 2, first_name: 'Helium', last_name:'B', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 3, first_name: 'Lithium', last_name:'C', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 4, first_name: 'Beryllium', last_name:'Lawson', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 5, first_name: 'Boron', last_name:'Lawson', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 6, first_name: 'Carbon', last_name:'Lawson', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 7, first_name: 'Nitrogen', last_name:'Lawson', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 8, first_name: 'Oxygen', last_name:'Lawson', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 9, first_name: 'Fluorine', last_name:'Lawson', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 10, first_name: 'Neon', last_name:'Lawson', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 11, first_name: 'Sodium', last_name:'Lawson', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 12, first_name: 'Magnesium', last_name:'Lawson', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 13, first_name: 'Aluminum', last_name:'Lawson', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 14, first_name: 'Silicon', last_name:'Lawson', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 15, first_name: 'Phosphorus', last_name:'Lawson', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 16, first_name: 'Sulfur', last_name:'Lawson', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 17, first_name: 'Chlorine', last_name:'Lawson', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 18, first_name: 'Argon', last_name:'Lawson', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 19, first_name: 'Potassium', last_name:'Lawson', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-  {id: 20, first_name: 'Calcium', last_name:'Lawson', email:'michael@mail.com', avatar:'https://reqres.in/img/faces/7-image.jpg'},
-];
+import {User, UserListResponse} from '../user';
+import {UserService} from '../user.service';
 
 /**
  * Data source for the UsersTable view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class UsersTableDataSource extends DataSource<UsersTableItem> {
-  data: UsersTableItem[] = EXAMPLE_DATA;
+export class UsersTableDataSource extends DataSource<User> {
+  data: User[] = [];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
-  constructor() {
+  constructor(private userService:UserService) {
     super();
   }
 
   /**
-   * Connect this data source to the table. The table will only update when
-   * the returned stream emits new items.
-   * @returns A stream of the items to be rendered.
+   * 將此數據源連接到表。 表格只會在以下時間更新
+	 * 返回的流發出新項目。
+	 * @returns 要呈現的項目流。
    */
-  connect(): Observable<UsersTableItem[]> {
-    if (this.paginator && this.sort) {
-      // Combine everything that affects the rendered data into one update
-      // stream for the data-table to consume.
+  connect(): Observable<User[]> {
+		if (this.paginator && this.sort) {
+			//將會影響資料渲染的事件(初始資料 & 換頁 & 排序)，整合成一個觀察流
       return merge(observableOf(this.data), this.paginator.page, this.sort.sortChange)
-        .pipe(map(() => {
-          return this.getPagedData(this.getSortedData([...this.data ]));
+        .pipe(map((event, eventCount)=> {
+          return this.getPagedData(this.getSortedData([...this.data]));
         }));
     } else {
       throw Error('Please set the paginator and sort on the data source before connecting.');
@@ -70,16 +42,15 @@ export class UsersTableDataSource extends DataSource<UsersTableItem> {
   }
 
   /**
-   *  Called when the table is being destroyed. Use this function, to clean up
-   * any open connections or free any held resources that were set up during connect.
+   * 當表被銷毀時調用。使用此功能可清除任何打開的連接或釋放連接期間設置的任何保留資源。
    */
   disconnect(): void {}
 
   /**
-   * Paginate the data (client-side). If you're using server-side pagination,
-   * this would be replaced by requesting the appropriate data from the server.
+   * 分頁數據（客戶端）。 如果您使用服務器端分頁，
+   * 這將被從服務器請求適當的數據所取代。
    */
-  private getPagedData(data: UsersTableItem[]): UsersTableItem[] {
+  private getPagedData(data: User[]): User[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -89,10 +60,10 @@ export class UsersTableDataSource extends DataSource<UsersTableItem> {
   }
 
   /**
-   * Sort the data (client-side). If you're using server-side sorting,
-   * this would be replaced by requesting the appropriate data from the server.
+   * 對數據進行排序（客戶端）。 如果您使用服務器端排序，
+   * 這將被從服務器請求適當的數據所取代。
    */
-  private getSortedData(data: UsersTableItem[]): UsersTableItem[] {
+  private getSortedData(data: User[]): User[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -108,6 +79,7 @@ export class UsersTableDataSource extends DataSource<UsersTableItem> {
       }
     });
   }
+
 }
 
 /** Simple sort comparator for example ID/Name columns (for client-side sorting). */

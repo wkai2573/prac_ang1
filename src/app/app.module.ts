@@ -4,6 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+//HTTP服務
+import {HttpClientModule} from '@angular/common/http';
+
 //material(設計風格) 元件
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
@@ -20,6 +23,7 @@ import { UsersTableComponent } from './users-table/users-table.component';
   ],
   imports: [
     BrowserModule,
+		HttpClientModule,
     BrowserAnimationsModule,
 		MatButtonModule,
 		MatTableModule,
