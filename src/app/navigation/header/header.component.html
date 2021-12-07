@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+
+	<!-- icon -->
+	<div fxHide.gt-sm>
+		<!--隱藏 gt:大於 sm:960px-->
+		<button mat-icon-button (click)="onToggleSidenav()">
+			<mat-icon>menu</mat-icon>
+		</button>
+	</div>
+
+	<!-- 左項目 -->
+	<div>
+		<a routerLink="/home"><mat-icon>home</mat-icon>home</a>
+	</div>
+
+	<!-- 右項目 -->
+	<div fxFlex fxLayout fxLayoutAlign="end" fxHide.lt-md>
+		<!--隱藏 lt:小於 md:959px-->
+		<ul fxLayout fxLayoutGap="15px" class="navigation-items">
+			<li>
+				<a routerLink="/owner"><mat-icon>assignment_ind</mat-icon>項目A</a>
+			</li>
+			<li>
+				<a routerLink="/account"><mat-icon>account_balance</mat-icon>項目B</a>
+			</li>
+		</ul>
+	</div>
+
+</mat-toolbar>

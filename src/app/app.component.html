@@ -1,4 +1,21 @@
-<h1>prac_avg1</h1>
+<!-- 漢堡選單練習 -->
+<mat-sidenav-container>
 
-<button mat-raised-button color="accent" (click)="click()">Accent</button>
-<app-users-table></app-users-table>
+	<!-- 佈局:測選單 -->
+	<mat-sidenav #sidenav role="navigation">
+		<app-sidenav (sidenavClose)="sidenav.close()"></app-sidenav>
+	</mat-sidenav>
+
+	<!-- 佈局:主頁面 -->
+	<mat-sidenav-content>
+
+		<!-- 標頭 -->
+		<app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+
+		<!-- 路由內容 -->
+		<main>
+			<router-outlet></router-outlet>
+		</main>
+
+	</mat-sidenav-content>
+</mat-sidenav-container>

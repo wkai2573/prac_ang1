@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {UserService} from './user.service';
 
 @Component({
 	selector: 'app-root',
@@ -8,14 +7,4 @@ import {UserService} from './user.service';
 })
 export class AppComponent {
 	title = 'ang1';
-	
-	constructor(
-		private userService:UserService
-	) {}
-
-	click() {
-		alert('我是按鈕');
-		debugger;
-	}
-
 }
