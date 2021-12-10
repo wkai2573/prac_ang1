@@ -1,11 +1,19 @@
-mat-sidenav-container, mat-sidenav-content, mat-sidenav {
-	height: 100%;
+/* 固定toolbar高 & 內容填滿剩餘空間 */
+.flex {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
 }
 
-mat-sidenav {
+mat-drawer-container {
+	flex-grow: 1;
+}
+
+/* 側選單寬 */
+mat-drawer {
 	width: 250px;
 }
 
-main {
+mat-drawer-content {
 	padding: 10px;
 }

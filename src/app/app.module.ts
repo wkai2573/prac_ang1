@@ -9,8 +9,11 @@ import {HttpClientModule} from '@angular/common/http';
 //路由
 import {RoutingModule} from './routing/routing.module';
 
-//Angular Flex-Layout
+//插件_Angular Flex-Layout
 import {FlexLayoutModule} from '@angular/flex-layout';
+//插件_angular-fontAwesome
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+
 //material(設計風格) 元件
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
@@ -20,12 +23,13 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
+import {LayoutModule} from '@angular/cdk/layout';
 
 //自訂元件
 import {UsersTableComponent} from './users-table/users-table.component';
 import {HomeComponent} from './home/home.component';
-import {HeaderComponent} from './navigation/header/header.component';
-import { SidenavListComponent } from './navigation/sidenav/sidenav.component';
+import {HeaderComponent} from './nav/header/header.component';
+import {DrawerComponent} from './nav/drawer/drawer.component';
 
 
 @NgModule({
@@ -34,7 +38,7 @@ import { SidenavListComponent } from './navigation/sidenav/sidenav.component';
 		UsersTableComponent,
 		HomeComponent,
 		HeaderComponent,
-  SidenavListComponent,
+		DrawerComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -49,7 +53,9 @@ import { SidenavListComponent } from './navigation/sidenav/sidenav.component';
 		MatSidenavModule,
 		MatIconModule,
 		MatToolbarModule,
-		MatListModule
+		MatListModule,
+		LayoutModule,
+		FontAwesomeModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

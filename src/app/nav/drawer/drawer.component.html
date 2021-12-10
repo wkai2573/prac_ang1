@@ -1,0 +1,10 @@
+<mat-nav-list>
+	<ng-container *ngFor="let navRoute of navRoutes">
+		<a mat-list-item [routerLink]="navRoute.url" (click)="drawerClose()">
+			<mat-icon>{{navRoute.matIconName}}</mat-icon><span class="nav-caption">{{navRoute.name}}</span>
+		</a>
+	</ng-container>
+	<a mat-list-item (click)="setup()">
+		<mat-icon>build</mat-icon><span class="nav-caption">設定</span>
+	</a>
+</mat-nav-list>

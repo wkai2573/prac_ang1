@@ -1,21 +1,18 @@
-<!-- 漢堡選單練習 -->
-<mat-sidenav-container>
+<div class="flex">
 
-	<!-- 佈局:測選單 -->
-	<mat-sidenav #sidenav role="navigation">
-		<app-sidenav (sidenavClose)="sidenav.close()"></app-sidenav>
-	</mat-sidenav>
+	<!-- nav工具列 -->
+	<app-header (drawerToggleEvent)="drawer.toggle()"></app-header>
+	
+	<!-- nav側選單 & 路由內容 -->
+	<mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop">
 
-	<!-- 佈局:主頁面 -->
-	<mat-sidenav-content>
+		<mat-drawer #drawer [mode]="drawerMode" role="navigation">
+			<app-drawer (drawerCloseEvent)="drawer.close()"></app-drawer>
+		</mat-drawer>
 
-		<!-- 標頭 -->
-		<app-header (sidenavToggle)="sidenav.toggle()"></app-header>
-
-		<!-- 路由內容 -->
-		<main>
+		<mat-drawer-content>
 			<router-outlet></router-outlet>
-		</main>
+		</mat-drawer-content>
+	</mat-drawer-container>
 
-	</mat-sidenav-content>
-</mat-sidenav-container>
+</div>

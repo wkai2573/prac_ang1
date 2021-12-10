@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+
+	<!-- 左項目, fxHide.gt-xs:大於600px隱藏 -->
+	<div>
+		<button mat-icon-button (click)="onToggleDrawer()">
+			<mat-icon>menu</mat-icon>
+		</button>
+		<ng-container *ngFor="let navRoute of navRoutes">
+			<button mat-button [class.selected]="this.router.url === navRoute.url"
+				routerLink="{{navRoute.url}}">{{navRoute.name}}</button>
+		</ng-container>
+	</div>
+
+	<!-- 右項目, fxHide.lt-sm:小於599px隱藏 -->
+	<div fxHide.lt-sm fxFlex fxLayout fxLayoutAlign="end">
+		<ul fxLayout fxLayoutGap="15px" class="navigation-items">
+			<li *ngFor="let navLink of navLinks">
+				<a (click)="openSite(navLink.url)">
+					<fa-icon [icon]="navLink.iconDefinition" size="lg"></fa-icon>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+</mat-toolbar>

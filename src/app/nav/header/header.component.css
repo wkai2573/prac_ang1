@@ -1,3 +1,7 @@
+.mat-icon-button {
+	margin: 0 10px 0 0;
+}
+
 a {
 	text-decoration: none;
 	color: white;
@@ -7,6 +11,10 @@ a:hover, a:active {
 	color: lightgray;
 }
 
+fa-icon {
+	cursor: pointer;
+}
+
 .navigation-items {
 	list-style-type: none;
 	padding: 0;
@@ -14,9 +22,9 @@ a:hover, a:active {
 }
 
 mat-toolbar {
-	border-radius: 3px;
+	border-radius: 0 0 50px 0;
 }
 
-mat-icon {
-	vertical-align: text-bottom;
+.mat-button.selected {
+	background-color: black;
 }
