@@ -16,3 +16,6 @@ export const navLinks: NavLink[] = [
 	{name: 'Github', url: 'https://www.google.com/', iconDefinition: faGithub},
 	{name: 'Youtube', url: 'https://www.google.com/', iconDefinition: faYoutube},
 ];
+
+//主題
+export const themes: string[] = ['theme-my-dark', 'theme-my-light', 'theme-purple-green'];

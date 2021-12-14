@@ -1,0 +1,23 @@
+// toolbar圓角
+mat-toolbar {
+	border-radius: 0 0 50px 0;
+}
+
+// 按鈕選擇時
+.mat-button.selected {
+	background-color: black;
+}
+
+// 按鈕移過效果
+.mat-button, .mat-icon-button{
+	color: white;
+	cursor: pointer;
+	
+	&:hover, &:active {
+		color: lightgray;
+	}
+}
+
+fa-icon {
+	font-size: 23px;
+}

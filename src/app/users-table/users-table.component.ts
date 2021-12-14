@@ -7,7 +7,7 @@ import {User, UserService} from '../service/user.service';
 @Component({
 	selector: 'app-users-table',
 	templateUrl: './users-table.component.html',
-	styleUrls: ['./users-table.component.css']
+	styleUrls: ['./users-table.component.scss']
 })
 export class UsersTableComponent implements AfterViewInit {
 	@ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -17,6 +17,7 @@ export class UsersTableComponent implements AfterViewInit {
 	pageIndex: number = 0;
 	pageEvent: PageEvent | undefined;
 	sort: Sort = {active: "id", direction: "asc"};
+	isLoading: boolean = false;
 
 	//要顯示的欄位 & 順序
 	displayedColumns = ['id', 'first_name', 'last_name', 'email', 'avatar'];
@@ -38,7 +39,9 @@ export class UsersTableComponent implements AfterViewInit {
 	}
 
 	public getServerData(event?: PageEvent) {
+		this.isLoading = true;
 		this.userService.getUsers(event?.pageIndex).subscribe(res => {
+			this.isLoading = false;
 			this.dataSource = res.data;
 			this.total = res.total;
 		});

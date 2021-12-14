@@ -1,13 +1,20 @@
-<div class="flex">
+
+<div class="mat-app-background flex" [class]="theme">
 
 	<!-- nav工具列 -->
-	<app-header (drawerToggleEvent)="drawer.toggle()"></app-header>
+	<app-header
+		(drawerToggleEvent)="drawer.toggle()"
+		(changeThemeEvent)="changeTheme($event)">
+	</app-header>
 	
 	<!-- nav側選單 & 路由內容 -->
 	<mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop">
 
 		<mat-drawer #drawer [mode]="drawerMode" role="navigation">
-			<app-drawer (drawerCloseEvent)="drawer.close()"></app-drawer>
+			<app-drawer
+				(drawerCloseEvent)="drawer.close()"
+				(changeThemeEvent)="changeTheme($event)">
+			</app-drawer>
 		</mat-drawer>
 
 		<mat-drawer-content>

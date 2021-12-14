@@ -1,44 +1,53 @@
 <h1>Page: UserTable</h1>
 <!-- 遠端表格練習 -->
 <div class="mat-elevation-z8">
-	<table mat-table class="full-width-table" [dataSource]="dataSource" (matSortChange)="sortData($event)" matSort
-		aria-label="Elements">
-		<!-- Id 欄位 -->
+	<table mat-table class="full-width-table" [dataSource]="dataSource" (matSortChange)="sortData($event)" matSort>
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+		<!-- 定義欄位:ID -->
 		<ng-container matColumnDef="id">
 			<th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
 			<td mat-cell *matCellDef="let row; debugger">{{row.id}}</td>
 		</ng-container>
 
-		<!-- 名 -->
+		<!-- 定義欄位:名 -->
 		<ng-container matColumnDef="first_name">
 			<th mat-header-cell *matHeaderCellDef mat-sort-header>First Name 名</th>
 			<td mat-cell *matCellDef="let row">{{row.first_name}}</td>
 		</ng-container>
 
-		<!-- 姓 -->
+		<!-- 定義欄位:姓 -->
 		<ng-container matColumnDef="last_name">
 			<th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name 姓</th>
 			<td mat-cell *matCellDef="let row">{{row.last_name}}</td>
 		</ng-container>
 
-		<!-- email -->
+		<!-- 定義欄位:email -->
 		<ng-container matColumnDef="email">
 			<th mat-header-cell *matHeaderCellDef mat-sort-header>Email 信箱</th>
 			<td mat-cell *matCellDef="let row">{{row.email}}</td>
 		</ng-container>
 
-		<!-- 頭像 -->
+		<!-- 定義欄位:頭像 -->
 		<ng-container matColumnDef="avatar">
 			<th mat-header-cell *matHeaderCellDef mat-sort-header>Avatar 頭像</th>
 			<td mat-cell *matCellDef="let row">{{row.avatar}}</td>
 		</ng-container>
-
-		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 	</table>
 
 	<!-- 分頁bar -->
-	<mat-paginator #paginator [length]="total" [pageIndex]="pageIndex" [pageSize]="6" [pageSizeOptions]="[6]"
-		(page)="pageEvent = getServerData($event)" aria-label="Select page">
+	<mat-paginator #paginator
+		[length]="total"
+		[pageIndex]="pageIndex"
+		[pageSize]="6"
+		[pageSizeOptions]="[6]"
+		(page)="pageEvent = getServerData($event)">
 	</mat-paginator>
+
+	<!-- loading -->
+	<div *ngIf="isLoading" class="loading">
+		<mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+	</div>
+
 </div>
