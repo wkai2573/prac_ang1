@@ -23,6 +23,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
 import {LayoutModule} from '@angular/cdk/layout';
 
 //自訂元件
@@ -54,6 +55,7 @@ import {DrawerComponent} from './nav/drawer/drawer.component';
 		MatIconModule,
 		MatToolbarModule,
 		MatListModule,
+		MatMenuModule,
 		LayoutModule,
 		FontAwesomeModule
 	],

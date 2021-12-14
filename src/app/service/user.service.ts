@@ -24,9 +24,8 @@ export interface UserListResponse {
 //服務
 @Injectable({providedIn: 'root'})
 export class UserService {
-
 	constructor(
-		private http: HttpClient
+		private http: HttpClient,
 	) {}
 
 	private apiUrl = 'https://reqres.in/api';

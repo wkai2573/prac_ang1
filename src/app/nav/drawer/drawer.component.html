@@ -1,10 +1,27 @@
 <mat-nav-list>
+
 	<ng-container *ngFor="let navRoute of navRoutes">
 		<a mat-list-item [routerLink]="navRoute.url" (click)="drawerClose()">
 			<mat-icon>{{navRoute.matIconName}}</mat-icon><span class="nav-caption">{{navRoute.name}}</span>
 		</a>
 	</ng-container>
+
+	<a mat-list-item [matMenuTriggerFor]="themeMenu">
+		<fa-icon [icon]="faPalette" size="lg"></fa-icon>
+		<span class="nav-caption">主題</span>
+	</a>
+
 	<a mat-list-item (click)="setup()">
 		<mat-icon>build</mat-icon><span class="nav-caption">設定</span>
 	</a>
+
+	<!-- 選單:主題 -->
+	<mat-menu #themeMenu="matMenu" xPosition="before">
+		<ng-container *ngFor="let theme of themes">
+			<button mat-menu-item (click)="changeTheme(theme)" (testEvent)="changeTheme(theme)">
+				{{theme}}
+			</button>
+		</ng-container>
+	</mat-menu>
+
 </mat-nav-list>

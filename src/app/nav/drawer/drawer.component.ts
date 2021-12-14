@@ -1,30 +1,36 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import {navRoutes} from '../nav-data';
+import {faPalette} from '@fortawesome/free-solid-svg-icons';
+import {navRoutes, themes} from '../nav-data';
 
 @Component({
   selector: 'app-drawer',
   templateUrl: './drawer.component.html',
-  styleUrls: ['./drawer.component.css']
+  styleUrls: ['./drawer.component.scss']
 })
-export class DrawerComponent implements OnInit {
+export class DrawerComponent {
+	constructor() { }
 
+	themes = themes;
 	navRoutes = navRoutes;
+	faPalette = faPalette;
 
-	//關閉側選單 執行器
 	@Output() drawerCloseEvent = new EventEmitter();
+	@Output() changeThemeEvent = new EventEmitter();
 
-  constructor() { }
-
+	//關側選單
 	drawerClose() {
     this.drawerCloseEvent.emit();
   }
+
+	//切換主題
+	changeTheme(theme:string) {
+		this.drawerClose();
+		this.changeThemeEvent.emit({theme});
+	}
 
 	setup() {
 		this.drawerClose();
 		alert("tool");
 	}
 
-	ngOnInit(): void {
-  }
-	
 }
