@@ -24,9 +24,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
-<<<<<<< HEAD
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
->>>>>>> 8b4b1d844345f72ec82879a782507b99eaa1a709
 import {LayoutModule} from '@angular/cdk/layout';
 
 //自訂元件
@@ -59,9 +57,7 @@ import {DrawerComponent} from './nav/drawer/drawer.component';
 		MatToolbarModule,
 		MatListModule,
 		MatMenuModule,
-<<<<<<< HEAD
 		MatProgressSpinnerModule,
->>>>>>> 8b4b1d844345f72ec82879a782507b99eaa1a709
 		LayoutModule,
 		FontAwesomeModule
 	],
