@@ -1,8 +1,10 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+//Apache用, https://www.itread01.com/content/1568185445.html
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 //HTTP服務
 import {HttpClientModule} from '@angular/common/http';
@@ -61,7 +63,7 @@ import {DrawerComponent} from './nav/drawer/drawer.component';
 		LayoutModule,
 		FontAwesomeModule
 	],
-	providers: [],
+	providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,30 +1,27 @@
 <mat-toolbar color="primary">
 
-	<!-- 左項目, fxHide.gt-xs:大於600px隱藏 -->
-	<div>
-		<button mat-icon-button (click)="openDrawer()">
-			<mat-icon>menu</mat-icon>
+	<!-- 漢堡按鈕 -->
+	<button mat-button class="hamburger" (click)="openDrawer()">
+		<mat-icon>menu</mat-icon>
+	</button>
+
+	<!-- 路由, fxHide.lt-sm:小於599px隱藏 -->
+	<div fxHide.lt-sm *ngFor="let navRoute of navRoutes">
+		<button mat-button [class.selected]="this.router.url === navRoute.url"
+			routerLink="{{navRoute.url}}">{{navRoute.name}}
 		</button>
-		<ng-container *ngFor="let navRoute of navRoutes">
-			<button mat-button [class.selected]="this.router.url === navRoute.url"
-				routerLink="{{navRoute.url}}">{{navRoute.name}}</button>
-		</ng-container>
 	</div>
 
-	<!-- 右項目, fxHide.lt-sm:小於599px隱藏 -->
-	<div fxHide.lt-sm fxFlex fxLayout fxLayoutAlign="end">
 
-		<!-- 按鈕 -->
+	<!-- 右項目 -->
+	<div fxFlex fxLayoutAlign="end center">
+
+		<input class="search" type="search" placeholder="查詢">
+
+		<!-- 按鈕:主題 -->
 		<button mat-icon-button [matMenuTriggerFor]="themeMenu" aria-label="主題">
 			<fa-icon [icon]="faPalette"></fa-icon>
 		</button>
-		<ng-container *ngFor="let navLink of navLinks">
-			<button mat-icon-button (click)="openSite(navLink.url)" aria-label="links">
-				<fa-icon [icon]="navLink.iconDefinition"></fa-icon>
-			</button>
-		</ng-container>
-
-		<!-- 選單:主題 -->
 		<mat-menu #themeMenu="matMenu">
 			<ng-container *ngFor="let theme of themes">
 				<button mat-menu-item (click)="changeTheme(theme)" (testEvent)="changeTheme(theme)">
@@ -33,6 +30,12 @@
 			</ng-container>
 		</mat-menu>
 
+		<!-- 按鈕:links -->
+		<ng-container *ngFor="let navLink of navLinks">
+			<button mat-icon-button (click)="openSite(navLink.url)" aria-label="navLinks">
+				<fa-icon [icon]="navLink.iconDefinition"></fa-icon>
+			</button>
+		</ng-container>
 	</div>
 
 </mat-toolbar>

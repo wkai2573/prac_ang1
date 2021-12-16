@@ -40,8 +40,8 @@ export class AppComponent {
 	}
 
 	//切換主題
-	changeTheme(event:any) {
-		this.theme = event.theme;
+	changeTheme(theme:string) {
+		this.theme = theme;
 	}
 
 }

@@ -15,7 +15,7 @@ export class DrawerComponent {
 	faPalette = faPalette;
 
 	@Output() drawerCloseEvent = new EventEmitter();
-	@Output() changeThemeEvent = new EventEmitter();
+	@Output() changeThemeEvent = new EventEmitter<string>();
 
 	//關側選單
 	drawerClose() {
@@ -25,7 +25,7 @@ export class DrawerComponent {
 	//切換主題
 	changeTheme(theme:string) {
 		this.drawerClose();
-		this.changeThemeEvent.emit({theme});
+		this.changeThemeEvent.emit(theme);
 	}
 
 	setup() {

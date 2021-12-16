@@ -19,9 +19,9 @@ export class HeaderComponent{
 	navLinks = navLinks;
 	faPalette = faPalette;
 	
-	//@Output: 將別處HTML屬性上的程序，指定給此變數，讓此程序可以自由決定操作
+	//@Output: 父層傳遞進來的事件(在父層HTML對此元件節點用小括號包住屬性)
 	@Output() drawerToggleEvent = new EventEmitter(); //側選單切換
-	@Output() changeThemeEvent = new EventEmitter();
+	@Output() changeThemeEvent = new EventEmitter<string>();
 
 	//開啟側選單
 	openDrawer() {
@@ -35,7 +35,7 @@ export class HeaderComponent{
 
 	//切換主題
 	changeTheme(theme:string) {
-		this.changeThemeEvent.emit({theme});
+		this.changeThemeEvent.emit(theme);
 	}
 
 

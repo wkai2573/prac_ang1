@@ -1,23 +1,43 @@
 // toolbar圓角
 mat-toolbar {
-	border-radius: 0 0 50px 0;
+	border-radius: 0 0 20px 0;
+	padding: 0 30px 0 0;
 }
 
 // 按鈕選擇時
 .mat-button.selected {
-	background-color: black;
+	background-color: #000A;
 }
 
 // 按鈕移過效果
 .mat-button, .mat-icon-button{
 	color: white;
-	cursor: pointer;
-	
 	&:hover, &:active {
 		color: lightgray;
 	}
 }
 
+// icon大小
 fa-icon {
 	font-size: 23px;
+}
+
+// 漢堡
+.hamburger {
+	height: 100%;
+}
+
+//搜尋框
+.search {
+	width: 170px;
+	height: 34px;
+  border-radius: 17px;
+	padding: 14px;
+	margin-right: 10px;
+  border: 0px;
+  outline: none;
+	vertical-align: middle;
+	background-color: #000A;
+	font-size: 14px;
+  color: #9DBFAF;
 }
