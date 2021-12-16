@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {Sort} from '@angular/material/sort';
 import {MatTable} from '@angular/material/table';
-import {User, UserService} from '../service/user.service';
+import {User, UserService} from '../../service/user.service';
 
 @Component({
 	selector: 'app-users-table',

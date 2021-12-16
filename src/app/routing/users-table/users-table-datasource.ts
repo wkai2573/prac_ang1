@@ -7,7 +7,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {map} from 'rxjs/operators';
 import {Observable, of as observableOf, merge} from 'rxjs';
-import {User, UserService} from '../service/user.service';
+import {User, UserService} from '../../service/user.service';
 
 /**
  * Data source for the UsersTable view. This class should

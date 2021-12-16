@@ -1,19 +1,22 @@
-/* 固定toolbar高 & 內容填滿剩餘空間 */
-.flex {
-	display: flex;
-	flex-direction: column;
+/* 固定toolbar高 */
+.wrap {
 	height: 100vh;
 }
 
+//toolbar下方
 mat-drawer-container {
-	flex-grow: 1;
+	
+	//側選單
+	> mat-drawer {
+		width: 250px;
+	}
+
+	//內容
+	> mat-drawer-content {
+		> main {
+			padding: 10px;
+		}
+	}
 }
 
-/* 側選單寬 */
-mat-drawer {
-	width: 250px;
-}
 
-mat-drawer-content {
-	padding: 10px;
-}

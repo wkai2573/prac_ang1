@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import {faPalette} from '@fortawesome/free-solid-svg-icons';
-import {navLinks, navRoutes, themes} from '../nav-data';
+import {navLinks, navRoutes, themes} from '../../const-data';
 
 //nav-toolbar 導覽工具列
 @Component({

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {faPalette} from '@fortawesome/free-solid-svg-icons';
-import {navRoutes, themes} from '../nav-data';
+import {navRoutes, themes} from '../../const-data';
 
 @Component({
   selector: 'app-drawer',

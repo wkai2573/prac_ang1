@@ -30,10 +30,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {LayoutModule} from '@angular/cdk/layout';
 
 //自訂元件
-import {UsersTableComponent} from './users-table/users-table.component';
-import {HomeComponent} from './home/home.component';
+import {UsersTableComponent} from './routing/users-table/users-table.component';
+import {HomeComponent} from './routing/home/home.component';
 import {HeaderComponent} from './nav/header/header.component';
 import {DrawerComponent} from './nav/drawer/drawer.component';
+import { FooterComponent } from './nav/footer/footer.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import {DrawerComponent} from './nav/drawer/drawer.component';
 		HomeComponent,
 		HeaderComponent,
 		DrawerComponent,
+  FooterComponent,
 	],
 	imports: [
 		BrowserModule,

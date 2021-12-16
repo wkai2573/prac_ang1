@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from '../home/home.component';
-import {UsersTableComponent} from '../users-table/users-table.component';
+import {HomeComponent} from './home/home.component';
+import {UsersTableComponent} from './users-table/users-table.component';
 
 
 const routes: Routes = [

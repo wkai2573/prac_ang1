@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MatDrawerMode} from '@angular/material/sidenav';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {themes} from './const-data';
 
 
 @Component({
@@ -10,7 +11,7 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 })
 export class AppComponent {
 	title = 'ang1';
-	theme = 'theme-purple-green'; //主題
+	theme = themes[0]; //主題
 
 	//側選單參數: 展開時禁用內容 & 展開方式
 	hasBackdrop:boolean = false;
@@ -22,12 +23,16 @@ export class AppComponent {
 		//側選單: 窄_擋住內容&禁用內容, 寬_推開內容
     breakpointObserver
       .observe([
-        Breakpoints.XSmall
+        Breakpoints.XSmall,
+				Breakpoints.Small
       ])
       .subscribe(result => {
 				let isPhoneSize = false;
 				for (const key in result.breakpoints) {
-					isPhoneSize = result.breakpoints[key];
+					if (result.breakpoints[key]) {
+						isPhoneSize = true;
+						break;
+					}
 				}
 				if (isPhoneSize) {
 					this.hasBackdrop = true;
