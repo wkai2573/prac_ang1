@@ -1,0 +1,62 @@
+<h1>Page: Entries</h1>
+<h3>API來源: https://github.com/davemachado/public-api</h3>
+
+<div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="10px">
+
+	<!-- row1:查詢按鈕 -->
+	<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+		<button mat-raised-button>查詢</button>
+		<mat-slide-toggle #showOptions>進階選項</mat-slide-toggle>
+	</div>
+	<mat-divider></mat-divider>
+
+	<!-- row2:查詢參數input -->
+	<div fxLayoutGap="10px" *ngIf="showOptions.checked">
+		<mat-form-field appearance="outline" floatLabel="always">
+			<mat-label>Title</mat-label>
+			<input matInput>
+		</mat-form-field>
+	
+		<mat-form-field appearance="outline" floatLabel="always">
+			<mat-label>Description</mat-label>
+			<input matInput>
+		</mat-form-field>
+	
+		<mat-form-field appearance="outline" floatLabel="always">
+			<mat-label>Auth</mat-label>
+			<input matInput>
+		</mat-form-field>
+		
+		<mat-form-field appearance="outline" floatLabel="always">
+			<mat-label>Https</mat-label>
+			<mat-select [(value)]="httpsSelected">
+				<mat-option value="all">All</mat-option>
+				<mat-option value="yes">Yes</mat-option>
+				<mat-option value="no">No</mat-option>
+			</mat-select>
+		</mat-form-field>
+	
+		<mat-form-field appearance="outline" floatLabel="always">
+			<mat-label>Cors</mat-label>
+			<mat-select [(value)]="corsSelected">
+				<mat-option value="all">All</mat-option>
+				<mat-option value="yes">Yes</mat-option>
+				<mat-option value="no">No</mat-option>
+				<mat-option value="unknown">unknown</mat-option>
+			</mat-select>
+		</mat-form-field>
+	
+		<mat-form-field appearance="outline" floatLabel="always">
+			<mat-label>Category</mat-label>
+			<input matInput>
+		</mat-form-field>
+		<mat-divider></mat-divider>
+	</div>
+
+	<!-- row3:表格 -->
+	<div>
+		
+	</div>
+
+	
+</div>

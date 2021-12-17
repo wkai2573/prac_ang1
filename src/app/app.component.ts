@@ -2,12 +2,15 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MatDrawerMode} from '@angular/material/sidenav';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {themes} from './const-data';
+import {RouterOutlet} from '@angular/router';
+import {fadeInAnimation} from './animetions';
 
 
 @Component({
 	selector: 'app-root',
 	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.scss']
+	styleUrls: ['./app.component.scss'],
+	animations: [fadeInAnimation]
 })
 export class AppComponent {
 	title = 'ang1';
@@ -49,4 +52,8 @@ export class AppComponent {
 		this.theme = theme;
 	}
 
+	//路由動畫
+	prepareRoute(outlet: RouterOutlet) {
+		return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+	}
 }

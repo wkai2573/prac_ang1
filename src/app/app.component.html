@@ -1,12 +1,14 @@
-<div class="wrap mat-app-background" [class]="theme" fxLayout="column">
+<div class="fitHeight mat-app-background" [class]="theme" fxLayout="column">
 
-	<!-- nav工具列 -->
+	
+
+	<!-- 上方:nav工具列 -->
 	<app-header
 		(drawerToggleEvent)="drawer.toggle()"
 		(changeThemeEvent)="changeTheme($event)">
 	</app-header>
-	
-	<!-- nav側選單 & 路由內容, fxFlex:填滿剩餘空間 -->
+
+	<!-- 下方:nav側選單+路由內容+footer, fxFlex:填滿剩餘空間 -->
 	<mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop" fxFlex>
 
 		<mat-drawer #drawer [mode]="drawerMode" role="navigation">
@@ -18,7 +20,9 @@
 
 		<mat-drawer-content fxLayout="column">
 			<main fxFlex>
-				<router-outlet></router-outlet>
+				<div [@routeAnimations]="prepareRoute(outlet)">
+					<router-outlet #outlet="outlet"></router-outlet>
+				</div>
 			</main>
 			<app-footer></app-footer>
 		</mat-drawer-content>
