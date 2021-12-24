@@ -96,8 +96,10 @@ export class EntriesComponent implements OnInit {
 	setHttps(httpsOption: string) {
 		switch (httpsOption) {
 			case 'all': this.params.https = null; break;
+<<<<<<< HEAD
 			case 'yes': this.params.https = 'true'; break;
 			case 'no': this.params.https = 'false'; break;
+>>>>>>> c168b7e92725b7a1999c791b657f69b89fb99dbb
 		}
 	}
 
