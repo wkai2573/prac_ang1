@@ -1,4 +1,10 @@
+//自訂主題, https://material.angular.io/guide/theming-your-components
+
+//SCSS debug 的方法: https://www.sitepoint.com/using-sass-error-warn-and-debug-directives/
+// @error "要檢查的變數: `#{$要檢查的變數}`.";
+
 @use "@angular/material" as mat;
+@use "./table-theme" as entries; //自訂組件主題-表格
 
 @include mat.core();
 
@@ -15,8 +21,7 @@ $dark-theme: mat.define-dark-theme(
 );
 
 @include mat.all-component-themes($dark-theme);
-// @include mat.core-theme($dark-theme);
-// @include mat.button-theme($dark-theme);
+@include entries.theme($dark-theme);
 
 //明亮主體
 $light-primary: mat.define-palette(mat.$indigo-palette);
@@ -32,8 +37,7 @@ $light-theme: mat.define-light-theme(
 
 .theme-my-light {
 	@include mat.all-component-themes($light-theme);
-	//  @include mat.core-color($light-theme);
-	//  @include mat.button-color($light-theme);
+	@include entries.theme($light-theme);
 }
 
 //預設主題 purple-green
@@ -52,4 +56,5 @@ $pg-theme: mat.define-dark-theme(
 
 .theme-purple-green {
 	@include mat.all-component-themes($pg-theme);
+	@include entries.theme($pg-theme);
 }

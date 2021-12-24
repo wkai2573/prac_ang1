@@ -10,6 +10,8 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 //路由
 import {RoutingModule} from './routing/routing.module';
+//使用ngModel
+import {FormsModule} from '@angular/forms';
 
 //插件_Angular Flex-Layout
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -35,6 +37,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 //自訂元件
 import {UsersTableComponent} from './routing/users-table/users-table.component';
@@ -60,6 +63,7 @@ import {EntriesComponent} from './routing/entries/entries.component';
 		HttpClientModule,
 		RoutingModule,
 		BrowserAnimationsModule,
+		FormsModule,
 		FontAwesomeModule,
 		FlexLayoutModule,
 		LayoutModule,
@@ -80,6 +84,7 @@ import {EntriesComponent} from './routing/entries/entries.component';
 		MatExpansionModule,
 		MatSlideToggleModule,
 		MatDividerModule,
+		MatGridListModule,
 	],
 	providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
 	bootstrap: [AppComponent]
