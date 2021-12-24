@@ -1,5 +1,63 @@
-@use '@angular/material' as mat;
-
+//查詢選項間隔
 mat-form-field {
 	margin-right: 10px;
+}
+
+//表格格式
+$padding: 10px;
+.mat-header-cell:first-of-type,
+.mat-cell:first-of-type {
+	padding-left: $padding;
+}
+.mat-header-cell:last-of-type,
+.mat-cell:last-of-type {
+	padding-right: $padding;
+}
+.mat-header-cell,
+.mat-cell {
+	padding: 0 $padding;
+	word-wrap: break-word;
+	&:not(:nth-last-child(1)) { //除了最後一個
+		border-right: 1px solid #AAAA;
+	}
+}
+.mat-header-cell {
+	font-size: 1rem;
+}
+.center {
+	text-align: center;
+}
+
+//表格欄位寬
+// https://stackoverflow.com/questions/53020792/how-to-set-width-of-mat-table-column-in-angular
+@mixin mat-table-columns($columns) {
+	.mat-column- {
+		@each $colName, $props in $columns {
+			&#{$colName} {
+				$width: map-get($props, "width");
+				min-width: $width;
+				max-width: $width;
+			}
+		}
+	}
+}
+
+$baseWidth: 1rem;
+@include mat-table-columns((
+	API: (width: 1 * $baseWidth),
+	Description: (width: 5 * $baseWidth),
+	Auth: (width: 1 * $baseWidth),
+	HTTPS: (width: 1 * $baseWidth),
+	Cors: (width: 1 * $baseWidth),
+	Link: (width: 5 * $baseWidth),
+	Category: (width: 1 * $baseWidth),
+	Entries: (width: 1 * $baseWidth),
+));
+
+//Entries欄
+.mat-column-Entries{
+	padding: 10px;
+	.right {
+		overflow-wrap: anywhere;
+	}
 }

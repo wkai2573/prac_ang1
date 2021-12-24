@@ -1,0 +1,33 @@
+// 自訂組件主題
+// https://material.angular.io/guide/theming-your-components
+
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+	//取得主題色
+  $config: mat.get-color-config($theme);
+  $primary-palette: map.get($config, 'primary');
+
+  .mat-header-cell {
+    background-color: mat.get-color-from-palette($primary-palette, 'darker');
+		color: mat.get-color-from-palette($primary-palette, 'darker-contrast'); //對比色
+  }
+
+	//條紋列
+	$background: map.get($config, 'background');
+	$background-color: mat.get-color-from-palette($background, 'background');
+	.mat-row:nth-child(even){
+		background: darken($background-color, 8%) //加深
+	}
+	.mat-row:nth-child(odd){
+		background: $background-color;
+	}
+}
+
+@mixin theme($theme) {
+  $color-config: mat.get-color-config($theme);
+  @if $color-config != null {
+    @include color($theme);
+  }
+}
