@@ -40,12 +40,12 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatGridListModule} from '@angular/material/grid-list';
 
 //自訂元件
-import {UsersTableComponent} from './routing/users-table/users-table.component';
+import {UsersTableComponent} from './routing/req-res/req-res.component';
 import {HomeComponent} from './routing/home/home.component';
 import {HeaderComponent} from './nav/header/header.component';
 import {DrawerComponent} from './nav/drawer/drawer.component';
 import {FooterComponent} from './nav/footer/footer.component';
-import {EntriesComponent} from './routing/entries/entries.component';
+import {EntriesComponent} from './routing/public-apis/public-apis.component';
 
 
 @NgModule({

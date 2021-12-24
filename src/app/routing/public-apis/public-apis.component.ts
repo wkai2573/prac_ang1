@@ -4,8 +4,8 @@ import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {EntriesService, Entry} from 'src/app/service/entries.service';
 
 @Component({
-	templateUrl: './entries.component.html',
-	styleUrls: ['./entries.component.scss']
+	templateUrl: './public-apis.component.html',
+	styleUrls: ['./public-apis.component.scss']
 })
 export class EntriesComponent implements OnInit {
 	constructor(

@@ -5,9 +5,9 @@ import {MatTable} from '@angular/material/table';
 import {User, UserService} from '../../service/user.service';
 
 @Component({
-	selector: 'app-users-table',
-	templateUrl: './users-table.component.html',
-	styleUrls: ['./users-table.component.scss']
+	selector: 'app-req-res',
+	templateUrl: './req-res.component.html',
+	styleUrls: ['./req-res.component.scss']
 })
 export class UsersTableComponent implements AfterViewInit {
 	@ViewChild(MatPaginator) paginator!: MatPaginator;
