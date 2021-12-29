@@ -40,24 +40,30 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatGridListModule} from '@angular/material/grid-list';
 
 //自訂元件
-import {UsersTableComponent} from './routing/req-res/req-res.component';
+import {ReqResComponent} from './routing/req-res/req-res.component';
 import {HomeComponent} from './routing/home/home.component';
 import {HeaderComponent} from './nav/header/header.component';
 import {DrawerComponent} from './nav/drawer/drawer.component';
 import {FooterComponent} from './nav/footer/footer.component';
-import {EntriesComponent} from './routing/public-apis/public-apis.component';
+import {PublicApisComponent} from './routing/public-apis/public-apis.component';
+import {Official1Component} from './routing/official1/official1.component';
+import {AutoOpenMenuComponent} from './component/auto-open-menu/auto-open-menu.component';
 
 
 @NgModule({
+	//declarations: 聲明啟用的component
 	declarations: [
 		AppComponent,
-		UsersTableComponent,
+		ReqResComponent,
 		HomeComponent,
 		HeaderComponent,
 		DrawerComponent,
 		FooterComponent,
-		EntriesComponent,
+		PublicApisComponent,
+		Official1Component,
+		AutoOpenMenuComponent,
 	],
+	//imports: 匯入module
 	imports: [
 		BrowserModule,
 		HttpClientModule,

@@ -1,0 +1,85 @@
+<h1>Page: Official1</h1>
+
+<!-- 導覽列navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- 幻燈片 -->
+<div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+	<div class="carousel-indicators">
+		<button type="button" data-bs-target="#mainCarousel" *ngFor="let item of carouselItems; let i = index"
+				[class.active]="item.active" [attr.data-bs-slide-to]="i" [attr.aria-current]="item.active" [attr.aria-label]="'Slide ' + i"></button>
+	</div>
+	<div class="carousel-inner">
+		<div *ngFor="let item of carouselItems; let i = index" class="carousel-item" [class.active]="item.active" [style.background-image]="'url(' + item.imgUrl + ')'">
+			<div class="carousel-caption">
+        <h1>{{ item.captionTitle }}</h1>
+        <p>{{ item.captionSubtitle }}</p>
+      </div>
+		</div>
+	</div>
+	<button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Previous</span>
+	</button>
+	<button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Next</span>
+	</button>
+</div>
+
+<!-- 跑馬燈 -->
+<div class="marquee">
+	<ul>
+		<li *ngFor="let item of marqueeItems"><p>📢{{item}}</p></li>
+	</ul>
+</div>
+
+<!-- 產品 -->
+<div class="products">
+
+</div>
+
+<!-- 關於 -->
+<div class="about">
+
+</div>
+
+<!-- 頁尾 -->
+<div class="footer">
+
+</div>

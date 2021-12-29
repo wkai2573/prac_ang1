@@ -4,7 +4,8 @@ import {RouterModule} from '@angular/router';
 import {routes} from '../const-data';
 
 @NgModule({
-	declarations: [],
+	declarations: [
+  ],
 	imports: [
 		CommonModule,
 		RouterModule.forRoot(routes)

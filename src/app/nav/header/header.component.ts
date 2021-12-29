@@ -11,7 +11,7 @@ import {navLinks, navRoutes, themes} from '../../const-data';
 })
 export class HeaderComponent{
 	constructor(
-		public router: Router,
+		public router: Router, //網址列參數
 	) {}
 
 	themes = themes;
@@ -37,6 +37,5 @@ export class HeaderComponent{
 	changeTheme(theme:string) {
 		this.changeThemeEvent.emit(theme);
 	}
-
 
 }

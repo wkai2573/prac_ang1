@@ -14,17 +14,17 @@
 	<div fxLayoutGap="10px" *ngIf="showOptions.checked">
 		<mat-form-field appearance="outline" floatLabel="always">
 			<mat-label>Title</mat-label>
-			<input matInput [(ngModel)]="params.title" (keydown.enter)="loadEntries()">
+			<input matInput [(ngModel)]="params.title" (keydown.enter)="loadEntries()" aria-label="Title">
 		</mat-form-field>
 
 		<mat-form-field appearance="outline" floatLabel="always">
 			<mat-label>Description</mat-label>
-			<input matInput [(ngModel)]="params.description" (keydown.enter)="loadEntries()">
+			<input matInput [(ngModel)]="params.description" (keydown.enter)="loadEntries()" aria-label="Description">
 		</mat-form-field>
 
 		<mat-form-field appearance="outline" floatLabel="always">
 			<mat-label>Auth</mat-label>
-			<input matInput [(ngModel)]="params.auth" (keydown.enter)="loadEntries()">
+			<input matInput [(ngModel)]="params.auth" (keydown.enter)="loadEntries()" aria-label="Auth">
 		</mat-form-field>
 
 		<mat-form-field appearance="outline" floatLabel="always">
@@ -43,7 +43,7 @@
 
 		<mat-form-field appearance="outline" floatLabel="always">
 			<mat-label>Category</mat-label>
-			<input matInput [(ngModel)]="params.category" (keydown.enter)="loadEntries()">
+			<input matInput [(ngModel)]="params.category" (keydown.enter)="loadEntries()" aria-label="Category">
 		</mat-form-field>
 		<mat-divider></mat-divider>
 	</div>

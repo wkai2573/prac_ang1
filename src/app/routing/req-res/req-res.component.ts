@@ -9,7 +9,7 @@ import {User, UserService} from '../../service/user.service';
 	templateUrl: './req-res.component.html',
 	styleUrls: ['./req-res.component.scss']
 })
-export class UsersTableComponent implements AfterViewInit {
+export class ReqResComponent implements AfterViewInit {
 	@ViewChild(MatPaginator) paginator!: MatPaginator;
 	@ViewChild(MatTable) table!: MatTable<User>;
 	dataSource: User[] = [];

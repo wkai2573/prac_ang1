@@ -7,7 +7,7 @@ import {EntriesService, Entry} from 'src/app/service/entries.service';
 	templateUrl: './public-apis.component.html',
 	styleUrls: ['./public-apis.component.scss']
 })
-export class EntriesComponent implements OnInit {
+export class PublicApisComponent implements OnInit {
 	constructor(
 		private entriesService: EntriesService,
 		private breakpointObserver: BreakpointObserver, //視窗尺寸觀察
