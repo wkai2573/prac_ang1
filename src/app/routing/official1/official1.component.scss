@@ -11,31 +11,30 @@
 		color: white;
 		text-shadow: 1px 1px 2px black;
 		font-size: 3rem;
-		transform: scale(0);
+		visibility: hidden;
 	}
 	p {
 		color: white;
 		text-shadow: 1px 1px 2px black;
 		font-size: 1.2rem;
-		transform: translateY(200%);
-		opacity: 0;
+		visibility: hidden;
 	}
 }
 
 //幻燈片動畫(當.active)
 .carousel-item.active h1 {
-	animation: zoom-in 1.2s forwards;
+	animation: zoomIn 1.2s forwards;
 }
 .carousel-item.active p {
-	animation: slide-in 1.2s 0.8s forwards;
+	animation: fadeInUp 1.0s 0.5s forwards;
 }
-@keyframes zoom-in {
-	0% { transform: scale(0); }
-	100% { transform: scale(1); }
+@keyframes zoomIn {
+	0% { visibility: visible; transform: scale(0); }
+	100% { visibility: visible; transform: scale(1); }
 }
-@keyframes slide-in {
-	0% { transform: translateY(200%); opacity: 0;	}
-	100% { transform: translateY(0%); opacity: 1; }
+@keyframes fadeInUp {
+	0% { visibility: visible; transform: translateY(100%); opacity: 0; }
+	100% { visibility: visible; transform: translateY(0%); opacity: 1; }
 }
 
 //==跑馬燈==
@@ -52,11 +51,19 @@
 
 	> ul {
 		position: relative;
-		animation: marquee linear infinite; //時間在js設定
+		animation: marquee linear infinite; //時間在ts設定
 	}
 }
 
 @keyframes marquee {
 	0%   { transform: translateY(100px) }
 	100% { transform: translateY(-120%) }
+}
+
+//==other==
+.fadeInUp {
+	visibility: hidden;
+	&.animated {
+		animation: fadeInUp 1.0s 0.5s forwards;
+	}
 }
