@@ -38,46 +38,60 @@
   </div>
 </nav>
 
-<!-- 幻燈片 -->
-<div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
-	<div class="carousel-indicators">
-		<button type="button" data-bs-target="#mainCarousel" *ngFor="let item of carouselItems; let i = index"
-				[class.active]="item.active" [attr.data-bs-slide-to]="i" [attr.aria-current]="item.active" [attr.aria-label]="'Slide ' + i"></button>
+<div class="container">
+	<!-- 幻燈片 -->
+	<div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#mainCarousel" *ngFor="let item of carouselItems; let i = index"
+					[class.active]="item.active" [attr.data-bs-slide-to]="i" [attr.aria-current]="item.active" [attr.aria-label]="'Slide ' + i"></button>
+		</div>
+		<div class="carousel-inner">
+			<div *ngFor="let item of carouselItems; let i = index" class="carousel-item img" [class.active]="item.active" [style.background-image]="'url(' + item.imgUrl + ')'">
+				<div class="carousel-caption">
+					<h1>{{ item.captionTitle }}</h1>
+					<p>{{ item.captionSubtitle }}</p>
+				</div>
+			</div>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
 	</div>
-	<div class="carousel-inner">
-		<div *ngFor="let item of carouselItems; let i = index" class="carousel-item" [class.active]="item.active" [style.background-image]="'url(' + item.imgUrl + ')'">
-			<div class="carousel-caption">
-        <h1>{{ item.captionTitle }}</h1>
-        <p>{{ item.captionSubtitle }}</p>
-      </div>
+	
+	<!-- 跑馬燈 -->
+	<div class="marquee">
+		<ul>
+			<li *ngFor="let item of marqueeItems"><p>📢{{item}}</p></li>
+		</ul>
+	</div>
+	
+	<!-- 產品 -->
+	<div class="product-title mt-5 fadeInUp">
+		<h2>一二三四</h2>
+		<span>PRODUCTS</span>
+	</div>
+	<div class="product row">
+		<div *ngFor="let product of products" class="product-item col-sm-12 col-md-6 mt-4">
+			<div class="layout-box">
+				<div class="img" [style.background-image]="'url(' + product.imgUrl + ')'"></div>
+				<span>{{product.text}}</span>
+			</div>
 		</div>
 	</div>
-	<button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
-		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		<span class="visually-hidden">Previous</span>
+	<button type="button" class="btn btn-outline-primary">
+		查看更多
+		<i class="fa fa-chevron-right pl-5"></i>
 	</button>
-	<button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
-		<span class="carousel-control-next-icon" aria-hidden="true"></span>
-		<span class="visually-hidden">Next</span>
-	</button>
-</div>
-
-<!-- 跑馬燈 -->
-<div class="marquee">
-	<ul>
-		<li *ngFor="let item of marqueeItems"><p>📢{{item}}</p></li>
-	</ul>
-</div>
-
-<!-- 產品 -->
-<div class="product w-100 text-center fadeInUp">
-	<h2>一二三四</h2>
-	<span>PRODUCTS</span>
-</div>
-
-<!-- 關於 -->
-<div class="about">
-
+	
+	<!-- 關於 -->
+	<div class="about">
+	
+	</div>
 </div>
 
 <!-- 頁尾 -->

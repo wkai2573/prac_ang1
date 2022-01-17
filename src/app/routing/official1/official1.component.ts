@@ -26,8 +26,21 @@ const CAROUSE_ITEMS: CarouselItem[] = [
 	}
 ];
 
+//圖片文字
+declare interface ImgText {
+	imgUrl?: string,
+	text: string,
+}
+const PRODUCTS:ImgText[] = [
+	{imgUrl:'https://dummyimage.com/500x500/024/aaa', text:'系列1'},
+	{imgUrl:'https://dummyimage.com/500x500/042/aaa', text:'系列2 apple'},
+	{imgUrl:'https://dummyimage.com/500x500/420/aaa', text:'系列3 12345'},
+	{imgUrl:'https://dummyimage.com/500x500/240/aaa', text:'系列4 apple yummy'},
+];
+
 //跑馬燈
 const MARQUEE_ITEMS: string[] = [
+	'Hi',
 	// '新竹縣湖口鄉王爺壟運動公園興建工程 8000 m²',
 	// '桃園市觀音區草漯第一、三、六區整體開發單元市地重劃統包工程 41200 m²',
 	// '環南市場 2600 m²',
@@ -74,6 +87,7 @@ export class Official1Component implements AfterViewInit {
 
 	carouselItems = CAROUSE_ITEMS; //幻燈片
 	marqueeItems = MARQUEE_ITEMS;  //跑馬燈
+	products = PRODUCTS; //產品
 
 	//view初始化
 	ngAfterViewInit(): void {
@@ -87,7 +101,7 @@ export class Official1Component implements AfterViewInit {
 		//滾動添加動畫fadeInUp
 		// https://stackoverflow.com/questions/27462306/css3-animate-elements-if-visible-in-viewport-page-scroll/62536793#62536793
 		// Adriano回答
-		let productDiv = document.querySelector<HTMLElement>(".product")!;
+		let productDiv = document.querySelector<HTMLElement>(".fadeInUp")!;
 		let options = {
 			root: null,
 			rootMargin: '0px',
